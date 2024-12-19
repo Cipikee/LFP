@@ -7,6 +7,8 @@ public partial class AddProduct : Window
 	[Export]
 	private NodePath _name,_description,_amount,_price,_unit;
 
+	private Random random = new Random();
+
 	/// <summary>
 	/// Termék létrehozása és hozzáadása az adatbázishoz
 	/// </summary>
@@ -17,7 +19,7 @@ public partial class AddProduct : Window
 			LoginManager.GetUser().Id,
 			GetNode<LineEdit>(_name).Text,
 			GetNode<TextEdit>(_description).Text,
-			4.0,
+			random.Next(10,50) / 10,
 			Convert.ToInt16(GetNode<SpinBox>(_amount).Value),
 			Convert.ToInt16(GetNode<SpinBox>(_amount).Value),
 			(Unit) GetNode<OptionButton>(_unit).Selected,

@@ -97,6 +97,14 @@ public partial class Database : Node
 		return Instance._products.Find<Product>(_ => true).ToList();
 	}
 
+	public static List<Product> GetProductsByRating()
+	{
+		return Instance._products
+			.Find<Product>(_ => true)
+			.SortBy(x => x.Review)
+			.ToList();
+	}
+
 	public static void InsertProduct(Product product)
 	{
 		Instance._products.InsertOne(product);

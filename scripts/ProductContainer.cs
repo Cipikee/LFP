@@ -7,6 +7,8 @@ public partial class ProductContainer : VBoxContainer
 	[Export]
 	private PackedScene _card;
 
+	public Boolean sorted = false;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -27,13 +29,14 @@ public partial class ProductContainer : VBoxContainer
 	/// </summary>
 	public void Update()
 	{
+
 		foreach (var child in this.GetChildren())
 		{
 			RemoveChild(child);
 			child.QueueFree();
 		}
 
-		var products = Database.GetProducts();
+		var products = (sorted) ? Database.GetProductsByRating() : Database.GetProducts();
 
 		foreach (var product in products)
 		{

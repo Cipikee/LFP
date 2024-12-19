@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://y62et5a3nhar"]
+[gd_scene load_steps=14 format=3 uid="uid://y62et5a3nhar"]
 
 [ext_resource type="Theme" uid="uid://bf7785fhrwbab" path="res://resources/themes/theme.tres" id="1_u3icd"]
 [ext_resource type="Texture2D" uid="uid://00ljuakfd5vk" path="res://assets/user_icon_1.tres" id="2_b22vj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Main.cs" id="2_u2spa"]
 [ext_resource type="PackedScene" uid="uid://dppxn25g13jmh" path="res://scenes/add_product.tscn" id="3_wrii7"]
 [ext_resource type="Script" path="res://scripts/ProductContainer.cs" id="4_ailed"]
+[ext_resource type="PackedScene" uid="uid://mhfdywytvg66" path="res://scenes/product_highlight.tscn" id="4_rkfme"]
 [ext_resource type="Script" path="res://scripts/Menu.cs" id="4_w6b8x"]
 [ext_resource type="PackedScene" uid="uid://16eoupq77vg" path="res://scenes/login.tscn" id="5_ujk01"]
 [ext_resource type="Script" path="res://scripts/Updater.cs" id="6_7syjk"]
@@ -23,6 +24,7 @@ grow_vertical = 2
 theme = ExtResource("1_u3icd")
 script = ExtResource("2_u2spa")
 _add_product = ExtResource("3_wrii7")
+_highlight_product = ExtResource("4_rkfme")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -111,6 +113,7 @@ text = "Top termékek
 "
 
 [node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_direction = 1
 layout_mode = 2
@@ -152,4 +155,5 @@ script = ExtResource("6_7syjk")
 _product_container = NodePath("../VBoxContainer/MarginContainer/HBoxContainer3/ScrollContainer/VBoxContainer")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button2" to="." method="_On_Add_Product_Pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button4" to="." method="_On_Highlight_Pressed"]
 [connection signal="timeout" from="Timer" to="Timer" method="_On_Timeout"]

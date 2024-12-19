@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using MongoDB.Bson;
 
@@ -7,16 +8,9 @@ public class User
     public string Email;
     public string Username;
     public string Phone;
+    public double Rating;
     public string[] Address = {"","",""};
     public byte[] Password;
-
-    public User(ObjectId id, string email, string username, byte[] password)
-    {
-        Id = id;
-        Email = email;
-        Username = username;
-        Password = password;
-    }
 
     public User(string email, string username, string password)
     {
@@ -24,5 +18,6 @@ public class User
         Email = email;
         Username = username;
         Password = ASCIIEncoding.ASCII.GetBytes(password);
+        Rating = new Random().Next(10,50) / 10;
     }
 }
